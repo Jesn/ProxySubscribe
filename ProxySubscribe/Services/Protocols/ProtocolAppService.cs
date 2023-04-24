@@ -112,8 +112,10 @@ public class ProtocolAppService : IProtocolAppService
         }
     }
 
-    public async Task<string> Get(string id, string type = "")
+    public async Task<string> Get( string id, string type = "")
     {
+        
+
         if (string.IsNullOrWhiteSpace(id))
         {
             throw new ArgumentException("请输入对应的ID");
@@ -122,7 +124,7 @@ public class ProtocolAppService : IProtocolAppService
         var filePath = $"./Data/Subscribe/{id.ToLower()}.txt";
         if (!string.IsNullOrWhiteSpace(type) && type.ToLower().Equals("vmess"))
         {
-            filePath= $"./Data/Subscribe/{id.ToLower()}-vmess.txt";
+            filePath = $"./Data/Subscribe/{id.ToLower()}-vmess.txt";
         }
 
         if (!File.Exists(filePath))

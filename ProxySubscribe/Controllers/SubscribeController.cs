@@ -27,12 +27,18 @@ public class SubscribeController : Controller
     /// <summary>
     /// 根据ID获取数据
     /// </summary>
+    /// <param name="token"></param>
     /// <param name="id"></param>
     /// <param name="type"></param>
     /// <returns></returns>
     [HttpGet]
-    public async Task<string> Get(string id, string type)
+    public async Task<string> Get(string token, string id, string type = "")
     {
+        if (token != "c376f13f189adcb66d3f29627a39b93a")
+        {
+            throw new ArgumentException("无效Token");
+        }
+
         if (string.IsNullOrWhiteSpace(id))
         {
             return string.Empty;

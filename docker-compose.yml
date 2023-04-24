@@ -10,6 +10,8 @@
     networks:
       - default
       - nginx_bridge
+    volumes:
+      -  /data/docker/proxy-sub/data:/app/Data/
 
 
 

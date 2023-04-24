@@ -5,6 +5,8 @@
     build:
       context: .
       dockerfile: ProxySubscribe/Dockerfile
+    environment:
+      - TZ=Asia/Shanghai
     networks:
       - default
       - nginx_bridge

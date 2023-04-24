@@ -1,0 +1,9 @@
+﻿services:
+  proxy-sub:
+    image: proxy-sub
+    build:
+      context: .
+      dockerfile: ProxySubscribe/Dockerfile
+
+
+

@@ -1,9 +1,18 @@
 ﻿services:
   proxy-sub:
     image: proxy-sub
+    container_name: proxy-sub
     build:
       context: .
       dockerfile: ProxySubscribe/Dockerfile
+    networks:
+      - default
+      - nginx_bridge
 
 
 
+networks:
+  default:
+    driver: bridge
+  nginx_bridge:
+    external: true

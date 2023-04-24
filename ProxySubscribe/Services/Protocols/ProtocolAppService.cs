@@ -19,27 +19,6 @@ public class ProtocolAppService : IProtocolAppService
         _httpClientFactory = httpClientFactory;
     }
 
-    /**
-     * vmess://ew0KICAidiI6ICIyIiwNCiAgInBzIjogInRlc3QyIiwNCiAgImFkZCI6ICIxNTguMTAxLjE1MC4xMzkiLA0KICAicG9ydCI6ICI0NDMiLA0KICAiaWQiOiAiMGFlYmJjODgtOGM1My00MTg4LWVkYjctNzg4MWJiNDQzNTZmIiwNCiAgImFpZCI6ICIwIiwNCiAgInNjeSI6ICJhdXRvIiwNCiAgIm5ldCI6ICJ3cyIsDQogICJ0eXBlIjogIm5vbmUiLA0KICAiaG9zdCI6ICJyaWNoZm9ja3MudG9wIiwNCiAgInBhdGgiOiAiLzBhZWJiYzg4LThjNTMtNDE4OC1lZGI3LTc4ODFiYjQ0MzU2ZiIsDQogICJ0bHMiOiAidGxzIiwNCiAgInNuaSI6ICIiLA0KICAiYWxwbiI6ICIiDQp9
-
-    {
-      "v": "2",
-      "ps": "test2",
-      "add": "158.101.150.139",
-      "port": "443",
-      "id": "0aebbc88-8c53-4188-edb7-7881bb44356f",
-      "aid": "0",
-      "scy": "auto",
-      "net": "ws",
-      "type": "none",
-      "host": "richfocks.top",
-      "path": "/0aebbc88-8c53-4188-edb7-7881bb44356f",
-      "tls": "tls",
-      "sni": "",
-      "alpn": ""
-    }
-
-     */
     public async Task Create(List<string>? ips)
     {
         var xuiJsonStr = await File.ReadAllTextAsync("./Data/XUI/user.json");

@@ -28,15 +28,16 @@ public class SubscribeController : Controller
     /// 根据ID获取数据
     /// </summary>
     /// <param name="id"></param>
+    /// <param name="type"></param>
     /// <returns></returns>
     [HttpGet]
-    public async Task<string> Get(string id)
+    public async Task<string> Get(string id, string type)
     {
         if (string.IsNullOrWhiteSpace(id))
         {
             return string.Empty;
         }
 
-        return await _protocolAppService.Get(id);
+        return await _protocolAppService.Get(id, type);
     }
 }

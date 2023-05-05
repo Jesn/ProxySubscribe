@@ -24,7 +24,6 @@ public class ProtocolAppService : IProtocolAppService
         var xuiJsonStr = await File.ReadAllTextAsync("./Data/XUI/user.json");
         var listXuiUser = JsonSerializer.Deserialize<List<XuiUserConfig>>(xuiJsonStr);
 
-
         foreach (var userConfig in listXuiUser)
         {
             var listVmess = new List<string>();
@@ -44,7 +43,8 @@ public class ProtocolAppService : IProtocolAppService
                 path = userConfig.Path,
                 tls = "tls",
                 sni = string.Empty,
-                alpn = string.Empty
+                alpn = string.Empty,
+                fp = string.Empty
             };
 
             listVmess.Add(ConvertToVmessBase64Protol(defaultVmess));
@@ -91,10 +91,8 @@ public class ProtocolAppService : IProtocolAppService
         }
     }
 
-    public async Task<string> Get( string id, string type = "")
+    public async Task<string> Get(string id, string type = "")
     {
-        
-
         if (string.IsNullOrWhiteSpace(id))
         {
             throw new ArgumentException("请输入对应的ID");
@@ -130,7 +128,22 @@ public class ProtocolAppService : IProtocolAppService
         foreach (var ip in ips)
         {
             var client = _httpClientFactory.CreateClient("GetIPLocation");
-            var url = $"http://ip-api.com/json/{ip}?lang=zh-CN";
+
+            // https://ip125.com/api/154.53.56.159?lang=zh-CN
+
+            // var url = $"http://ip-api.com/json/{ip}?lang=zh-CN";
+
+            var listUrl = new List<string>()
+            {
+                $"http://ip-api.com/json/{ip}?lang=zh-CN",
+                $"https://ip125.com/api/{ip}?lang=zh-CN"
+            };
+            var random = new Random();
+            var index = random.Next(listUrl.Count);
+            var url = listUrl[index];
+
+            
+            
             var result = await client.GetStringAsync(url);
 
             var jsonDoc = JsonDocument.Parse(result);

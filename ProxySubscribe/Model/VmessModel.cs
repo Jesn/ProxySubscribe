@@ -16,4 +16,6 @@ public class VmessModel
     public string tls { get; set; }
     public string sni { get; set; }
     public string alpn { get; set; }
+    public string fp { get; set; }
+    
 }

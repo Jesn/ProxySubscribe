@@ -20,3 +20,4 @@ networks:
     driver: bridge
   nginx_bridge:
     external: true
+    
